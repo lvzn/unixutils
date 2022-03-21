@@ -3,16 +3,16 @@
 
 int readFile(char* filename) {
     FILE* f = NULL;
-    char* buf;
-    size_t length = 0;
+    char buf[100];
+    int length = 100;
     if ((f = fopen(filename, "r")) == NULL) {
         fprintf(stderr, "my-cat: cannot open file\n");
         exit(1);
     }
-    printf("\nTiedosto %s\n", filename);
-    while (getline(&buf, &length, f) != -1){
+    while (fgets(buf, length, f) != NULL){
         printf("%s", buf);
     }
+    puts("\n");
     fclose(f);
     return(0);
 }
