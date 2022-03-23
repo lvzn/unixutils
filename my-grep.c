@@ -10,8 +10,6 @@ void readStream(char* searchTerm) {
     size_t length = 0;
     char* buf = NULL;
     while (getline(&buf, &length, stdin) != -1) {
-        if (strcmp(buf, "\n") == 0)
-            exit(0);
         if (strstr(buf, searchTerm) != NULL) { //sources used: 1
             printf("%s", buf);
         }
